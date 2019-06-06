@@ -22,10 +22,11 @@ OAuth Code View / 显示验证码的View
                        DESC
 
   s.homepage         = 'https://github.com/shede333/SWOAuthCode'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots      = ['https://raw.githubusercontent.com/shede333/SWOAuthCode/master/Screenshot/OAuthCode1.png',
+                        'https://raw.githubusercontent.com/shede333/SWOAuthCode/master/Screenshot/OAuthCode2.png']
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'shede333' => '333wshw@163.com' }
-  s.source           = { :git => 'git@github.com:shede333/SWOAuthCode.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/shede333/SWOAuthCode.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
