@@ -125,6 +125,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)textContent;
 
+/**
+ 设置所有输入框的边缘颜色
+ 
+ @param color 输入框的边缘颜色
+ */
+- (void)setAllBoxBorderColor:(UIColor *)color;
+
 @end
 
 NS_ASSUME_NONNULL_END

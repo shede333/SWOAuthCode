@@ -188,6 +188,12 @@
     return self.textView.text;
 }
 
+- (void)setAllBoxBorderColor:(UIColor *)color{
+    for (SWOACItemBoxView *boxView in self.boxViewArr) {
+        boxView.layer.borderColor = color.CGColor;
+    }
+}
+
 #pragma mark - Function重写
 
 - (void)setBoxNormalBorderColor:(UIColor *)boxNormalBorderColor{
