@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SWOAuthCode'
-  s.version          = '0.3.0'
+  s.version          = '0.4.0'
   s.summary          = 'OAuth Code View / 显示、输入 验证码 的View'
 
 # This description is used to generate tags and improve search results.
