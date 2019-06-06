@@ -5,6 +5,10 @@
 [![License](https://img.shields.io/cocoapods/l/SWOAuthCode.svg?style=flat)](https://cocoapods.org/pods/SWOAuthCode)
 [![Platform](https://img.shields.io/cocoapods/p/SWOAuthCode.svg?style=flat)](https://cocoapods.org/pods/SWOAuthCode)
 
+## Source Code
+
+<https://gitee.com/shede333/SWOAuthCode>
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
