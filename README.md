@@ -58,6 +58,8 @@ oacView.boxTextColor = [UIColor blackColor]; //方框内文字的颜色
 
 shede333, 333wshw@163.com
 
+此项目的思路，借鉴于：<https://github.com/meiqi1992/MQVerCodeInputView>
+
 ## License
 
 SWOAuthCode is available under the MIT license. See the LICENSE file for more info.
