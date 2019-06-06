@@ -35,9 +35,9 @@
 
 @interface SWOAuthCodeView ()<UITextViewDelegate>
 
-@property (nonatomic, strong) UIView *containerView;
-@property (nonatomic, strong) SWOACOnlyKBTextView *textView;
-@property (nonatomic, strong) NSArray<SWOACItemBoxView *> *boxViewArr;
+@property (nonatomic, strong) UIView *containerView; //放置所有Box的容器view
+@property (nonatomic, strong) NSArray<SWOACItemBoxView *> *boxViewArr; //所有的Box对象
+@property (nonatomic, strong) SWOACOnlyKBTextView *textView; //接收输入事件的透明TextView
 
 @property (nonatomic, assign) NSInteger maxLenght;
 
@@ -72,59 +72,42 @@
     self.isEndEditWhenTextToMax = YES;
 }
 
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    NSArray *boxViewArr = self.boxViewArr;
+    [boxViewArr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal
+                         withFixedItemLength:self.frame.size.height
+                                 leadSpacing:0
+                                 tailSpacing:0];
+}
+
 - (void)setupUI{
     //创建输入验证码view
     if (_maxLenght<=0) {
         return;
     }
     
+    //添加textView
+    [self addSubview:self.textView];
+    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.textView.superview);
+    }];
+    
+    //放置所有Box的容器view
     [self addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.containerView.superview);
     }];
     
-    //添加textView
-    [self.containerView addSubview:self.textView];
-    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.textView.superview);
-    }];
-    
     NSMutableArray *boxViewArr = [NSMutableArray array];
-    UIView *lastDivideView = nil;
     for (int index = 0; index < self.maxLenght; index++) {
-        UIView *divideView = [[UIView alloc] init];  // 用于等分的view
-        divideView.backgroundColor = [UIColor clearColor];
-        divideView.userInteractionEnabled = NO; //不响应任何事件
-        [self.containerView addSubview:divideView];
-        if (index == 0) {
-            //第一个
-            [divideView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.top.bottom.equalTo(divideView.superview);
-            }];
-        }else if (index == (self.maxLenght - 1)){
-            //最后一个
-            [divideView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.top.bottom.equalTo(divideView.superview);
-                make.left.equalTo(lastDivideView.mas_right);
-                make.width.equalTo(lastDivideView);
-            }];
-        }else{
-            //中间的
-            [divideView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.bottom.equalTo(divideView.superview);
-                make.left.equalTo(lastDivideView.mas_right);
-                make.width.equalTo(lastDivideView);
-            }];
-        }
-        
         //用于显示边框的View
         SWOACItemBoxView *boxView = [[SWOACItemBoxView alloc] init];
         boxView.layer.masksToBounds = YES;
-        [divideView addSubview:boxView];
+        [self.containerView addSubview:boxView];
         [boxView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(boxView.superview);
-            make.height.equalTo(boxView.superview);
-            make.width.equalTo(boxView.superview.mas_height);
+            make.top.bottom.equalTo(boxView.superview);
         }];
         [boxViewArr addObject:boxView];
         
@@ -143,8 +126,6 @@
         //显示数字的Label
         UILabel *itemLabel = boxView.textLabel;
         [boxView addSubview:itemLabel];
-        
-        lastDivideView = divideView;
     }
     self.boxViewArr = boxViewArr;
     
@@ -301,6 +282,7 @@
     if (!_containerView) {
         _containerView = [[UIView alloc] init];
         _containerView.backgroundColor = [UIColor clearColor];
+        _containerView.userInteractionEnabled = NO;
     }
     return _containerView;
 }
