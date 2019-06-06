@@ -48,6 +48,15 @@ oacView.boxTextColor = [UIColor blackColor]; //方框内文字的颜色
 }];
 ```
 
+## 功能
+
+* 很大程度上支持UI自定义化；
+* 支持自动布局；
+* 设置、修改输入框内容；
+* 清空输入框内容；
+* 设置所有输入框的边框颜色（比如错误状态时，全部设置为红色）；
+* 变更输入框状态;
+
 ## Screenshot
 
 ![](https://raw.githubusercontent.com/shede333/SWOAuthCode/master/Screenshot/OAuthCode1.png)

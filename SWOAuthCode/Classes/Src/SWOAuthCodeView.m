@@ -155,6 +155,55 @@
     self.textView.font = self.boxTextFont;
 }
 
+//处理输入框里的文本变化、输入状态的变化
+- (void)handleTextContentChange{
+    NSString *originText = self.textView.text;
+    NSString *contentText = originText;
+    
+    //有空格去掉空格
+    contentText = [contentText stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    //检测文本长度
+    if (contentText.length > self.maxLenght) {
+        //文本超出最大长度
+        contentText = [contentText substringToIndex:self.maxLenght];
+    }
+    if (![contentText isEqualToString:originText]) {
+        //文本有变化，则更新输入框内容
+        self.textView.text = contentText;
+    }
+    
+    //修改所有Label里的内容
+    NSArray *boxViewArr = self.boxViewArr;
+    for (int i= 0; i < boxViewArr.count; i++) {
+        SWOACItemBoxView *boxView = self.boxViewArr[i];
+        if (i < contentText.length) {
+            boxView.textLabel.text = [contentText substringWithRange:NSMakeRange(i, 1)];
+        }else{
+            boxView.textLabel.text = @"";
+        }
+    }
+    
+    //更新光标状态
+    if (self.textView.isFirstResponder) {
+        //输入中
+        for (int i= 0; i < boxViewArr.count; i++) {
+            SWOACItemBoxView *boxView = boxViewArr[i];
+            BOOL isHideCursor = (i != contentText.length); //是否隐藏光标
+            boxView.layer.borderColor = isHideCursor?self.boxNormalBorderColor.CGColor:self.boxHighlightBorderColor.CGColor;
+            [boxView setCursorIsHidden:isHideCursor];
+        }
+    }else{
+        //不在输入状态，则不显示光标
+        for (int i= 0; i < boxViewArr.count; i++) {
+            SWOACItemBoxView *boxView = boxViewArr[i];
+            BOOL isHideCursor = YES; //隐藏光标
+            boxView.layer.borderColor = isHideCursor?self.boxNormalBorderColor.CGColor:self.boxHighlightBorderColor.CGColor;
+            [boxView setCursorIsHidden:isHideCursor];
+        }
+    }
+}
+
 #pragma mark - Function - Public
 
 - (void)beginEdit{
@@ -173,6 +222,15 @@
     for (SWOACItemBoxView *boxView in self.boxViewArr) {
         boxView.layer.borderColor = color.CGColor;
     }
+}
+
+- (void)setInputBoxText:(nullable NSString *)text{
+    self.textView.text = text;
+    [self handleTextContentChange];
+}
+
+- (void)emptyInputBoxText{
+    [self setInputBoxText:nil];
 }
 
 #pragma mark - Function重写
@@ -221,42 +279,31 @@
 
 #pragma mark - UITextViewDelegate
 
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    //显示: 光标
+    [self handleTextContentChange];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    //隐藏: 光标
+    [self handleTextContentChange];
+}
+
 - (void)textViewDidChange:(UITextView *)textView{
-    NSString *contentText = textView.text;
-    //有空格去掉空格
-    contentText = [contentText stringByReplacingOccurrencesOfString:@" " withString:@""];
-    BOOL isFinish = NO;
-    if (contentText.length >= self.maxLenght) {
-        //文本超出最大长度
-        contentText = [contentText substringToIndex:self.maxLenght];
-        isFinish = YES;
-    }
-    textView.text = contentText;
+    //处理textView里的文本
+    [self handleTextContentChange];
+    
+    NSString *contentText = self.textView.text;
     
     if ([self.delegate respondsToSelector:@selector(oauthCodeView:inputTextChange:)]) {
         //将textView的值修改情况传出去
         [self.delegate oauthCodeView:self inputTextChange:contentText];
     }
     
-    //更新Label
-    for (int i= 0; i < self.boxViewArr.count; i++) {
-        SWOACItemBoxView *boxView = self.boxViewArr[i];
-        BOOL isHideCursor = (i != contentText.length); //是否显示光标
-        boxView.layer.borderColor = isHideCursor?self.boxNormalBorderColor.CGColor:self.boxHighlightBorderColor.CGColor;
-        [boxView setCursorIsHidden:isHideCursor];
-        
-        //修改所有Label里的内容
-        if (i < contentText.length) {
-            boxView.textLabel.text = [contentText substringWithRange:NSMakeRange(i, 1)];
-        }else{
-            boxView.textLabel.text = @"";
-        }
-    }
-    
-    if (isFinish) {
-        //完成最大长度输入
+    if (contentText.length >= self.maxLenght) {
+        //文本 达到/超出 最大长度
         if (self.isEndEditWhenTextToMax) {
-            [self endEdit];
+            [self endEdit]; //结束输入状态
         }
         if ([_delegate respondsToSelector:@selector(oauthCodeView:didInputFinish:)]) {
             [_delegate oauthCodeView:self didInputFinish:contentText];

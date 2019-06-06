@@ -132,6 +132,18 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setAllBoxBorderColor:(UIColor *)color;
 
+/**
+ 设置输入框内容
+ 
+ @param text 输入框的内容（建议为纯数字或者空）
+ */
+- (void)setInputBoxText:(nullable NSString *)text;
+
+/**
+ 清空输入框内容
+ */
+- (void)emptyInputBoxText;
+
 @end
 
 NS_ASSUME_NONNULL_END
