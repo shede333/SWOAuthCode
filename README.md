@@ -7,7 +7,7 @@
 
 ## Source Code
 
-<https://gitee.com/shede333/SWOAuthCode>
+<https://github.com/shede333/SWOAuthCode>
 
 ## Example
 
