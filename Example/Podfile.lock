@@ -1,0 +1,23 @@
+PODS:
+  - Masonry (1.1.0)
+  - SWOAuthCode (0.1.0):
+    - Masonry (~> 1.1.0)
+
+DEPENDENCIES:
+  - SWOAuthCode (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Masonry
+
+EXTERNAL SOURCES:
+  SWOAuthCode:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SWOAuthCode: f5505aa0aaa4f9bc738f1442db4b38f3f47ab1bc
+
+PODFILE CHECKSUM: cb41cb439035e6ce6656f57fcfb2aca9cabf88ce
+
+COCOAPODS: 1.5.3

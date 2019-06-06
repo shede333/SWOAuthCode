@@ -38,11 +38,11 @@
 
 /* Begin PBXFileReference section */
 		0D00BF370009DB823965FE48 /* Pods-SWOAuthCode_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWOAuthCode_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SWOAuthCode_Example/Pods-SWOAuthCode_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		177D82B1FA9447F8B2FA6A48 /* SWOAuthCode.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SWOAuthCode.podspec; path = ../SWOAuthCode.podspec; sourceTree = "<group>"; };
+		177D82B1FA9447F8B2FA6A48 /* SWOAuthCode.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SWOAuthCode.podspec; path = ../SWOAuthCode.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		253652AD0DDA81A6BD2A0E97 /* Pods-SWOAuthCode_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWOAuthCode_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWOAuthCode_Example/Pods-SWOAuthCode_Example.release.xcconfig"; sourceTree = "<group>"; };
 		2D5CDC0521DC22C02FC20467 /* Pods-SWOAuthCode_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWOAuthCode_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWOAuthCode_Tests/Pods-SWOAuthCode_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2EFA35DED21AD0F9A5622803 /* Pods_SWOAuthCode_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWOAuthCode_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3891C995C8BEEEFEDAA7A5AD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		3891C995C8BEEEFEDAA7A5AD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* SWOAuthCode_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWOAuthCode_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,7 +66,7 @@
 		82F145971CC8356FCC90C419 /* Pods_SWOAuthCode_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWOAuthCode_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C2FB4F411984379919C0EBF /* Pods-SWOAuthCode_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWOAuthCode_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SWOAuthCode_Tests/Pods-SWOAuthCode_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		D929A6CC6DA1EDC7E9EC08F8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		D929A6CC6DA1EDC7E9EC08F8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,10 +319,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SWOAuthCode_Example/Pods-SWOAuthCode_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SWOAuthCode/SWOAuthCode.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWOAuthCode.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,10 @@
+#ifndef OSWOAuthCode-prefix_h
+#define OSWOAuthCode-prefix_h
+
+#define SWColorWithRGBA(r, g, b, a) [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:a]
+#define SWColorWithRGB(r, g, b) SWColorWithRGBA(r, g, b, 1.0)
+#define SWColorHexWithAlpha(hexValue, aplha) [UIColor colorWithRed:((CGFloat)((hexValue & 0xFF0000) >> 16))/255.0 green:((CGFloat)((hexValue & 0xFF00) >> 8))/255.0 blue:((CGFloat)(hexValue & 0xFF))/255.0 alpha:aplha]
+#define SWColorHex(hexValue) SWColorHexWithAlpha(hexValue, 1.0)
+
+
+#endif /* OSWOAuthCode-prefix_h */
