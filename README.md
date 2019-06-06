@@ -48,6 +48,12 @@ oacView.boxTextColor = [UIColor blackColor]; //方框内文字的颜色
 }];
 ```
 
+## Screenshot
+
+![](https://raw.githubusercontent.com/shede333/SWOAuthCode/master/Screenshot/OAuthCode1.png)
+
+![](https://raw.githubusercontent.com/shede333/SWOAuthCode/master/Screenshot/OAuthCode2.png)
+
 ## Author
 
 shede333, 333wshw@163.com
@@ -55,3 +61,5 @@ shede333, 333wshw@163.com
 ## License
 
 SWOAuthCode is available under the MIT license. See the LICENSE file for more info.
+
+
