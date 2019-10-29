@@ -318,7 +318,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SWOAuthCode_Example/Pods-SWOAuthCode_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SWOAuthCode_Example/Pods-SWOAuthCode_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SWOAuthCode/SWOAuthCode.framework",
 			);
@@ -329,7 +329,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SWOAuthCode_Example/Pods-SWOAuthCode_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SWOAuthCode_Example/Pods-SWOAuthCode_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DEB47FBFF4A63B7BE385DFA1 /* [CP] Check Pods Manifest.lock */ = {
