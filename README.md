@@ -63,9 +63,9 @@ oacView.boxTextColor = [UIColor blackColor]; //方框内文字的颜色
 
 ## Screenshot
 
-![](https://raw.githubusercontent.com/shede333/SWOAuthCode/master/Screenshot/OAuthCode1.png)
+![image1](https://raw.githubusercontent.com/shede333/SWOAuthCode/master/Screenshot/OAuthCode1.png)
 
-![](https://raw.githubusercontent.com/shede333/SWOAuthCode/master/Screenshot/OAuthCode2.png)
+![image2](https://raw.githubusercontent.com/shede333/SWOAuthCode/master/Screenshot/OAuthCode2.png)
 
 ## Author
 
